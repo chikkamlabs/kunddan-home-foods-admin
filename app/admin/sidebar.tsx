@@ -19,7 +19,7 @@ interface SidebarProps {
 
 export const navigationItems = [
   { name: 'Home', href: '/admin/dashboard', icon: Home },
-  { name: 'Orders', href: '/admin/orders', icon: ShoppingBag },
+  { name: 'Orders', href: '/admin/orders/dashboard', icon: ShoppingBag },
   { name: 'Products', href: '/admin/products', icon: Package },
   { name: 'Categories', href: '/admin/categories/dashboard', icon: FolderTree },
   { name: 'Customers', href: '/admin/customers', icon: Users },
@@ -74,7 +74,7 @@ export default function AdminSidebar({ isOpen, onClose }: SidebarProps) {
               const Icon = item.icon;
               const isActive =
                 pathname === item.href ||
-                (item.href !== '/admin/dashboard' && pathname.startsWith(item.href));
+                (item.href !== '/admin/dashboard' && pathname.startsWith(item.href.replace(/\/dashboard$/, '')));
 
               return (
                 <Link

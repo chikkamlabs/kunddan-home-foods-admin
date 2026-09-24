@@ -20,10 +20,10 @@ interface SidebarProps {
 export const navigationItems = [
   { name: 'Home', href: '/admin/dashboard', icon: Home },
   { name: 'Orders', href: '/admin/orders/dashboard', icon: ShoppingBag },
-  { name: 'Products', href: '/admin/products', icon: Package },
+  { name: 'Products', href: '/admin/products/dashboard', icon: Package },
   { name: 'Categories', href: '/admin/categories/dashboard', icon: FolderTree },
-  { name: 'Customers', href: '/admin/customers', icon: Users },
-  { name: 'Coupons', href: '/admin/coupons', icon: Ticket },
+  { name: 'Customers', href: '/admin/customers/dashboard', icon: Users },
+  { name: 'Coupons', href: '/admin/coupons/dashboard', icon: Ticket },
 ];
 
 export default function AdminSidebar({ isOpen, onClose }: SidebarProps) {
@@ -74,6 +74,11 @@ export default function AdminSidebar({ isOpen, onClose }: SidebarProps) {
               const Icon = item.icon;
               const isActive =
                 pathname === item.href ||
+                (item.name === 'Customers' && (pathname.startsWith('/customers') || pathname.startsWith('/opencustomer') || pathname.startsWith('/admin/customers'))) ||
+                (item.name === 'Coupons' && (pathname.startsWith('/coupons') || pathname.startsWith('/opencoupon') || pathname.startsWith('/admin/coupons'))) ||
+                (item.name === 'Orders' && (pathname.startsWith('/orders') || pathname.startsWith('/admin/orders'))) ||
+                (item.name === 'Categories' && (pathname.startsWith('/categories') || pathname.startsWith('/admin/categories'))) ||
+                (item.name === 'Products' && (pathname.startsWith('/products') || pathname.startsWith('/admin/products') || pathname.startsWith('/admin/addproduct') || pathname.startsWith('/admin/openproduct'))) ||
                 (item.href !== '/admin/dashboard' && pathname.startsWith(item.href.replace(/\/dashboard$/, '')));
 
               return (

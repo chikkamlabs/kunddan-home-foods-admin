@@ -52,6 +52,32 @@ export async function getTotalOrdersCount(): Promise<number> {
 }
 
 /**
+ * Fetches total count of orders created today.
+ */
+export async function getTodayOrdersCount(): Promise<number> {
+  try {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const startOfTodayIso = today.toISOString();
+
+    const { count, error } = await supabase
+      .from('orders')
+      .select('*', { count: 'exact', head: true })
+      .gte('created_at', startOfTodayIso);
+
+    if (error) {
+      console.error('Error fetching today orders count:', error.message);
+      return 0;
+    }
+
+    return count || 0;
+  } catch (err) {
+    console.error('Error in getTodayOrdersCount:', err);
+    return 0;
+  }
+}
+
+/**
  * Fetches orders with joined customer data and order items.
  * Supports date range (fromDate, toDate) and search query (order_id, customer name).
  */

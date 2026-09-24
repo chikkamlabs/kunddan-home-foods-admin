@@ -54,6 +54,27 @@ export function getNextProductId(currentCount: number = 0): string {
 }
 
 /**
+ * Fetches total count of all products in the database.
+ */
+export async function getTotalProductsCount(): Promise<number> {
+  try {
+    const { count, error } = await supabase
+      .from('products')
+      .select('*', { count: 'exact', head: true });
+
+    if (error) {
+      console.error('Error fetching products count:', error.message);
+      return 0;
+    }
+
+    return count || 0;
+  } catch (err) {
+    console.error('Error in getTotalProductsCount:', err);
+    return 0;
+  }
+}
+
+/**
  * Uploads a product image file to the Supabase `product_images` storage bucket.
  * Returns the public URL of the uploaded image.
  */

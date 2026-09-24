@@ -50,7 +50,7 @@ export default function AdminHeader({
         <div className="flex items-center gap-2.5 sm:gap-3">
           <div className="relative h-10 w-10 sm:h-12 sm:w-12 shrink-0 overflow-hidden rounded-xl border border-neutral-200 bg-white p-0.5 shadow-xs flex items-center justify-center">
             <Image
-              src="/khf_logo.png"
+              src="/khf_logo_f.png"
               alt="Kunddan Home Foods Logo"
               width={44}
               height={44}

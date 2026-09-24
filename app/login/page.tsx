@@ -54,7 +54,7 @@ export default function LoginPage() {
         <div className="flex justify-center mb-6">
           <div className="relative h-20 w-20 overflow-hidden rounded-xl bg-neutral-50 p-1 border border-neutral-100 shadow-sm flex items-center justify-center">
             <Image
-              src="/khf_logo.png"
+              src="/khf_logo_f.png"
               alt="Kunddan Home Foods Logo"
               width={76}
               height={76}
